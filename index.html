@@ -196,6 +196,35 @@
       nav, .menu-toggle {
         display: none !important;
       }
+
+      /* Ajustes highlights */
+      .hi {
+        grid-template-columns: 1fr 1fr; /* mantém 2 colunas no mobile */
+        gap: 8px;                       /* menos espaço entre cards */
+      }
+      .hi .i {
+        padding: 10px;                  /* menos padding */
+        font-size: 13px;                /* texto menor */
+      }
+      .hi .i .ico {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;                /* ícone menor */
+      }
+      .hi .i b {
+        font-size: 14px;                /* título menor */
+      }
+
+      /* Botão orçamento no header */
+      .nav-cta .btn-dark {
+        padding: 8px 12px;              /* reduz padding horizontal */
+        font-size: 13px;                /* fonte menor */
+      }
+      .nav-cta .btn-ghost {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
       .grid-3{grid-template-columns:1fr}
       .slides img{height:240px}
       .est .row{grid-template-columns:1fr}
