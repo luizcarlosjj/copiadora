@@ -176,18 +176,50 @@
     .reveal{opacity:0; transform:translateY(14px); transition:.5s}
     .reveal.show{opacity:1; transform:none}
 
-    /* Responsive */
+    /* Responsividade aprimorada */
     @media (max-width:980px){
       .grid-3{grid-template-columns:1fr 1fr}
       .hi{grid-template-columns:1fr 1fr}
       .fgrid{grid-template-columns:1fr}
-      nav ul{display:none}
+
+      /* nav mobile */
+      nav ul{display:none; flex-direction:column; background:#111; padding:12px; border-radius:10px; position:absolute; right:20px; top:64px}
+      nav ul.show{display:flex}
+      nav ul a{color:#fff}
       .menu-toggle{display:inline-block}
+      
+      /* preços */
+      #precos .grid{grid-template-columns:1fr !important}
     }
+
     @media (max-width:620px){
       .grid-3{grid-template-columns:1fr}
       .slides img{height:240px}
       .est .row{grid-template-columns:1fr}
+
+      /* cards */
+      .card h3{font-size:clamp(16px,4vw,18px)}
+      .card p{font-size:clamp(13px,3.6vw,15px)}
+
+      /* contato: só Whats */
+      #forms{display:none}
+      #endereco-horarios{display:inline-flex !important; text-align:center; margin-top:20px;gap:0px}
+      /* hero */
+      .hero {
+        margin:0;           /* remove margens */
+        border-radius:0;
+        padding: 20px;    /* sem cantos arredondados */
+      }
+
+      /* footer */
+      footer .fgrid {
+        gap:28px;           /* mais espaçamento entre colunas */
+        padding:40px 20px;  /* padding maior */
+      }
+      footer .copy, footer .container.copy {
+        padding:24px 0;     /* mais espaçamento vertical */
+        font-size:15px;     /* ligeiramente maior p/ legibilidade */
+      }
     }
   </style>
 </head>
@@ -421,7 +453,7 @@
       <p class="section-sub reveal">Envie sua mensagem e receba o orçamento em minutos.</p>
 
       <div class="grid" style="grid-template-columns:1fr 1fr; gap:18px">
-        <form class="est reveal" onsubmit="return enviarFormWhats(this)">
+        <form id="forms" class="est reveal" onsubmit="return enviarFormWhats(this)">
           <label>Nome
             <input name="nome" required placeholder="Seu nome" />
           </label>
@@ -445,7 +477,7 @@
           </div>
         </form>
 
-        <div class="card reveal" style="gap:10px">
+        <div id="endereco-horarios" class="card reveal" style="gap:10px">
           <h3>Endereço & Horários</h3>
           <p>Rua Exemplo, 123 — Centro, Goiânia-GO</p>
           <p><b>Seg–Sex:</b> 08:00–18:00 • <b>Sáb:</b> 08:00–12:00</p>
