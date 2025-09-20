@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Copiadora Amarelinha — Cópias, Impressões e Digitalizações</title>
+  <meta name="description" content="Copiadora Amarelinha: soluções rápidas em cópias, impressões, digitalizações, encadernações e plotagens com qualidade e preço justo." />
+  <meta property="og:title" content="Copiadora Amarelinha — Cópias, Impressões e Digitalizações" />
+  <meta property="og:description" content="Soluções rápidas em cópias e impressões. Orçamento imediato pelo WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://source.unsplash.com/1600x900/?printer,office" />
+  <meta name="theme-color" content="#FDCD14" />
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --brand:#FDCD14;
+      --brand-2:#e7b900;
+      --bg:#0f1115;
+      --surface:#161a23;
+      --text:#1b1b1b;
+      --muted:#6b6f76;
+      --white:#fff;
+      --radius:16px;
+      --shadow:0 12px 32px rgba(0,0,0,.15);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--text); background:#fafafa; line-height:1.65;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1180px; margin:auto; padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; backdrop-filter:saturate(120%) blur(8px);
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      z-index:50; box-shadow:0 6px 20px rgba(0,0,0,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; padding:14px 0;
+    }
+    .logo{
+      display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px;
+    }
+    .logo-badge{
+      width:40px; height:40px; border-radius:12px; display:grid; place-items:center;
+      background:var(--text); color:var(--brand); font-weight:800;
+    }
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{font-weight:600; opacity:.9}
+    nav a:hover{opacity:1}
+    .nav-cta{display:flex; gap:12px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 18px; border-radius:12px; font-weight:700; border:2px solid transparent; transition:.2s;
+    }
+    .btn-dark{background:#1e1e1e; color:#fff}
+    .btn-dark:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(0,0,0,.15)}
+    .btn-ghost{border-color:#1e1e1e}
+    .menu-toggle{display:none; background:#1e1e1e; color:#fff; border:none; border-radius:10px; padding:10px 12px}
+
+    /* Hero */
+    .hero{
+      position:relative; margin:28px 20px 0; border-radius:var(--radius); overflow:hidden;
+      background:#111; color:#111;
+    }
+    .hero-media{
+      position:absolute; inset:0; background:url("https://source.unsplash.com/1600x900/?printer,copyshop") center/cover no-repeat;
+      filter:grayscale(10%) contrast(105%);
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background:linear-gradient(120deg, rgba(253,205,20,.88), rgba(253,205,20,.35) 60%, rgba(253,205,20,.15));
+    }
+    .hero-content{
+      position:relative; z-index:1; padding:70px 0;
+    }
+    .hero h1{font-size:clamp(28px,4vw,48px); line-height:1.15; margin:0 0 12px}
+    .hero p{max-width:720px; margin:0 0 22px; font-size:clamp(15px,1.6vw,18px)}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 26px}
+    .badge{background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.08); padding:8px 12px; border-radius:20px; font-weight:600}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* Sections */
+    section{padding:70px 0}
+    h2.section-title{font-size:clamp(22px,3vw,32px); text-align:center; margin:0 0 28px}
+    .section-sub{max-width:760px; text-align:center; margin:0 auto 34px; color:var(--muted)}
+
+    /* Services grid */
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .card{
+      background:#fff; border:1px solid #eee; border-radius:16px; padding:22px; box-shadow:var(--shadow);
+      transition:.2s; display:flex; flex-direction:column; gap:12px;
+    }
+    .card:hover{transform:translateY(-3px)}
+    .card img.thumb{width:100%; height:170px; object-fit:cover; border-radius:12px}
+    .card h3{margin:4px 0 2px}
+    .card p{color:#565a61; margin:0}
+    .pill{display:inline-block; background:#111; color:#fff; font-size:12px; padding:6px 10px; border-radius:999px; margin-top:auto; width:max-content}
+
+    /* Highlights (icons) */
+    .hi{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+    }
+    .hi .i{
+      background:#fff; border:1px solid #eee; border-radius:14px; padding:16px; display:flex; gap:12px; align-items:center;
+      box-shadow:var(--shadow)
+    }
+    .hi .i .ico{width:42px; height:42px; border-radius:10px; display:grid; place-items:center; background:#111; color:#fff; font-weight:800}
+    .hi .i b{display:block}
+
+    /* Gallery slider */
+    .gallery{
+      position:relative; overflow:hidden; border-radius:16px; box-shadow:var(--shadow); border:1px solid #eee;
+    }
+    .slides{display:flex; transition:transform .5s ease}
+    .slides img{width:100%; height:360px; object-fit:cover; flex:0 0 100%}
+    .g-ctl{
+      position:absolute; inset:auto 10px 10px auto; display:flex; gap:8px;
+    }
+    .g-ctl button{
+      border:none; background:#111; color:#fff; padding:10px 12px; border-radius:10px; cursor:pointer; opacity:.9
+    }
+    .g-ctl button:hover{opacity:1}
+
+    /* CTA full */
+    .cta{
+      background:linear-gradient(90deg,var(--brand),var(--brand-2)); border-radius:16px; padding:32px; box-shadow:var(--shadow); color:#111
+    }
+    .cta h3{margin:0 0 8px}
+
+    /* Pricing */
+    .price{
+      background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); padding:22px
+    }
+    .price table{width:100%; border-collapse:collapse}
+    .price th,.price td{padding:12px 10px; border-bottom:1px solid #f0f0f0; text-align:left}
+    .price tfoot td{font-weight:800}
+
+    /* Estimador */
+    .est{
+      background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); padding:22px; display:grid; gap:14px
+    }
+    .est label{font-weight:600}
+    .est .row{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    .est input,.est select{width:100%; padding:12px 12px; border-radius:10px; border:1px solid #ddd; font:inherit}
+    .est .total{display:flex; align-items:center; justify-content:space-between; background:#111; color:#fff; padding:12px 14px; border-radius:12px; font-weight:800}
+    .est .actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    /* FAQ */
+    .faq .q{background:#fff; border:1px solid #eee; border-radius:12px; padding:16px; box-shadow:var(--shadow); cursor:pointer}
+    .faq .q + .a{display:none; padding:12px 6px 22px; color:#565a61}
+    .faq .q.open + .a{display:block}
+
+    /* Footer */
+    footer{background:#111; color:#eee; margin-top:50px}
+    .fgrid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:18px; padding:28px 0}
+    footer a{color:#fff; opacity:.9}
+    footer a:hover{opacity:1}
+    .copy{border-top:1px solid rgba(255,255,255,.1); padding:14px 0; color:#bbb; font-size:14px}
+
+    /* Floating WhatsApp */
+    .wafloat{
+      position:fixed; right:16px; bottom:16px; z-index:60;
+      width:56px; height:56px; border-radius:999px; display:grid; place-items:center; background:#25D366; color:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,.2); font-size:26px
+    }
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(14px); transition:.5s}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .grid-3{grid-template-columns:1fr 1fr}
+      .hi{grid-template-columns:1fr 1fr}
+      .fgrid{grid-template-columns:1fr}
+      nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+    @media (max-width:620px){
+      .grid-3{grid-template-columns:1fr}
+      .slides img{height:240px}
+      .est .row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio" aria-label="Copiadora Amarelinha">
+        <span class="logo-badge">CA</span> Copiadora Amarelinha
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#precos">Preços</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="#precos">Tabela</a>
+        <a class="btn btn-dark" href="#contato">Orçamento</a>
+        <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleMenu()">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="hero-media" role="img" aria-label="Impressora em ambiente de escritório"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Impressões e cópias com <u>agilidade</u> e <u>qualidade</u>.</h1>
+      <p>Colorido ou P&B, digitalizações, encadernações e plotagens. Atendimento rápido para estudantes, escritórios e empresas.</p>
+      <div class="badges">
+        <span class="badge">💨 Entrega Rápida</span>
+        <span class="badge">🖨️ Qualidade Profissional</span>
+        <span class="badge">💳 Pagamento Fácil</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-dark" href="https://wa.me/5562999176992?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20impress%C3%A3o." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section>
+    <div class="container hi reveal">
+      <div class="i"><span class="ico">24h</span><div><b>Pronto no dia</b><small class="dblock">Fluxo otimizado e prazos curtos.</small></div></div>
+      <div class="i"><span class="ico">HQ</span><div><b>Alta definição</b><small class="dblock">Papéis e tintas de qualidade.</small></div></div>
+      <div class="i"><span class="ico">A3</span><div><b>Formatos maiores</b><small class="dblock">A4, A3 e tamanhos especiais.</small></div></div>
+      <div class="i"><span class="ico">PDF</span><div><b>Digitalizações</b><small class="dblock">PDFs organizados e nítidos.</small></div></div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="section-title reveal">Nossos Serviços</h2>
+      <p class="section-sub reveal">Tudo o que você precisa num só lugar: do arquivo ao resultado final, com atendimento humano e prazos que cabem na sua rotina.</p>
+
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <img class="thumb" src="https://source.unsplash.com/800x600/?printer,color" alt="Impressões coloridas" loading="lazy" />
+          <h3>Cópias & Impressões</h3>
+          <p>Impressões coloridas e P&B com nitidez e fidelidade. Aceitamos PDF, DOCX e imagens.</p>
+          <span class="pill">a partir de R$ 0,25</span>
+        </article>
+
+        <article class="card reveal">
+          <img class="thumb" src="https://source.unsplash.com/800x600/?scanner,document" alt="Digitalização de documentos" loading="lazy" />
+          <h3>Digitalizações</h3>
+          <p>Transforme seus documentos em PDFs organizados com ajuste de contraste e corte.</p>
+          <span class="pill">a partir de R$ 1,50</span>
+        </article>
+
+        <article class="card reveal">
+          <img class="thumb" src="https://source.unsplash.com/800x600/?binding,office" alt="Encadernações" loading="lazy" />
+          <h3>Encadernações</h3>
+          <p>Ideal para TCCs, relatórios e apostilas. Capa transparente e acabamento limpo.</p>
+          <span class="pill">a partir de R$ 12,90</span>
+        </article>
+
+        <article class="card reveal">
+          <img class="thumb" src="https://source.unsplash.com/800x600/?plotter,printing" alt="Plotagem e cartazes" loading="lazy" />
+          <h3>Plotagens & Cartazes</h3>
+          <p>Banners, cartazes e plantas com definição e cores vibrantes.</p>
+          <span class="pill">sob consulta</span>
+        </article>
+
+        <article class="card reveal">
+          <img class="thumb" src="https://source.unsplash.com/800x600/?copy,shop" alt="Cópias rápidas" loading="lazy" />
+          <h3>Cópias Rápidas</h3>
+          <p>Alto volume com controle de páginas e revisão de arquivos.</p>
+          <span class="pill">economia por volume</span>
+        </article>
+
+        <article class="card reveal">
+          <img class="thumb" src="https://source.unsplash.com/800x600/?office,printer" alt="Serviços para empresas" loading="lazy" />
+          <h3>Para Empresas</h3>
+          <p>Planos mensais e faturamento. Atendimento dedicado para seu time.</p>
+          <span class="pill">planos sob medida</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section id="galeria">
+    <div class="container">
+      <h2 class="section-title reveal">Galeria</h2>
+      <p class="section-sub reveal">Um pouco do nosso dia a dia: impressões, acabamento e cuidado com cada detalhe.</p>
+
+      <div class="gallery reveal" aria-label="Galeria de fotos">
+        <div class="slides" id="slides">
+          <img src="https://source.unsplash.com/1600x900/?copier,office" alt="Copiadora em operação" loading="lazy" />
+          <img src="https://source.unsplash.com/1600x900/?printer,toner" alt="Equipamento de impressão" loading="lazy" />
+          <img src="https://source.unsplash.com/1600x900/?binding,documents" alt="Encadernação de trabalhos" loading="lazy" />
+          <img src="https://source.unsplash.com/1600x900/?plotter,blueprint" alt="Plotter imprimindo planta" loading="lazy" />
+        </div>
+        <div class="g-ctl">
+          <button onclick="prevSlide()" aria-label="Anterior">◀</button>
+          <button onclick="nextSlide()" aria-label="Próximo">▶</button>
+        </div>
+      </div>
+
+      <div class="cta reveal" style="margin-top:18px">
+        <h3>Precisa agora? Envie seu arquivo e receba o valor em minutos.</h3>
+        <p>Atendimento de segunda a sábado. Retire na loja ou consulte entrega.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+          <a class="btn btn-dark" target="_blank" rel="noopener" href="https://wa.me/5562999176992?text=Ol%C3%A1!%20Quero%20enviar%20um%20arquivo%20para%20or%C3%A7amento.">Enviar arquivo no WhatsApp</a>
+          <a class="btn btn-ghost" href="#estimador">Simular valor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preços + Estimador -->
+  <section id="precos">
+    <div class="container">
+      <h2 class="section-title reveal">Preços & Simulador</h2>
+      <p class="section-sub reveal">Valores de referência para o balcão. Para altos volumes, <b>consulte condições especiais</b>.</p>
+
+      <div class="grid" style="grid-template-columns:1.2fr .8fr; gap:18px">
+        <!-- Tabela -->
+        <div class="price reveal">
+          <table>
+            <thead>
+              <tr><th>Serviço</th><th>Detalhe</th><th>Preço</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Impressão P&B</td><td>A4 75g</td><td>R$ 0,25 / pág</td></tr>
+              <tr><td>Impressão Colorida</td><td>A4 90g</td><td>R$ 1,20 / pág</td></tr>
+              <tr><td>Digitalização</td><td>PDF por página</td><td>R$ 1,50</td></tr>
+              <tr><td>Encadernação</td><td>Capa cristal + traseira</td><td>R$ 12,90</td></tr>
+              <tr><td>Plotagem</td><td>A2/A1/A0</td><td>sob consulta</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td colspan="3">* Valores indicativos. Sujeitos a alteração por papel, tinta e acabamento.</td></tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Estimador -->
+        <div id="estimador" class="est reveal" aria-label="Estimador de orçamento">
+          <div class="row">
+            <div>
+              <label for="tipo">Tipo</label>
+              <select id="tipo">
+                <option value="pb">Impressão P&B</option>
+                <option value="color">Impressão Colorida</option>
+                <option value="scan">Digitalização</option>
+              </select>
+            </div>
+            <div>
+              <label for="paginas">Páginas</label>
+              <input id="paginas" type="number" min="1" value="20" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="encad">Encadernação</label>
+              <select id="encad">
+                <option value="0">Não</option>
+                <option value="12.9">Sim (R$ 12,90)</option>
+              </select>
+            </div>
+            <div>
+              <label for="papel">Papel</label>
+              <select id="papel">
+                <option value="0">A4 comum</option>
+                <option value="0.15">A4 90g (+R$ 0,15/pág)</option>
+                <option value="0.40">A4 fotográfico (+R$ 0,40/pág)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="total"><span>Total estimado</span><b id="total">R$ 0,00</b></div>
+          <div class="actions">
+            <button class="btn btn-dark" onclick="enviarWhats()">Enviar no WhatsApp</button>
+            <button class="btn btn-ghost" onclick="resetar()">Limpar</button>
+          </div>
+          <small style="color:#6b6f76">* Simulação aproximada. O valor final poderá variar conforme o arquivo.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <h2 class="section-title reveal">Perguntas Frequentes</h2>
+      <div class="faq">
+        <div class="q reveal" onclick="this.classList.toggle('open')"><b>Como envio meus arquivos?</b></div>
+        <div class="a">Pelo botão de WhatsApp, e-mail (PDF de preferência) ou pendrive na loja.</div>
+
+        <div class="q reveal" onclick="this.classList.toggle('open')"><b>Fazem entrega?</b></div>
+        <div class="a">Sim, consulte a taxa e a disponibilidade para sua região.</div>
+
+        <div class="q reveal" onclick="this.classList.toggle('open')"><b>Quais formas de pagamento?</b></div>
+        <div class="a">Pix, cartão e dinheiro. Para empresas, faturamento mediante cadastro.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <h2 class="section-title reveal">Fale Conosco</h2>
+      <p class="section-sub reveal">Envie sua mensagem e receba o orçamento em minutos.</p>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:18px">
+        <form class="est reveal" onsubmit="return enviarFormWhats(this)">
+          <label>Nome
+            <input name="nome" required placeholder="Seu nome" />
+          </label>
+          <label>Telefone
+            <input name="fone" required placeholder="(62) 9 9999-9999" />
+          </label>
+          <label>Serviço
+            <select name="servico">
+              <option>Cópias & Impressões</option>
+              <option>Digitalizações</option>
+              <option>Encadernações</option>
+              <option>Plotagens & Cartazes</option>
+            </select>
+          </label>
+          <label>Mensagem
+            <input name="msg" placeholder="Descreva brevemente sua necessidade" />
+          </label>
+          <div class="actions">
+            <button class="btn btn-dark" type="submit">Enviar no WhatsApp</button>
+            <a class="btn btn-ghost" href="mailto:contato@copiadoraamarelinha.com">Enviar por e-mail</a>
+          </div>
+        </form>
+
+        <div class="card reveal" style="gap:10px">
+          <h3>Endereço & Horários</h3>
+          <p>Rua Exemplo, 123 — Centro, Goiânia-GO</p>
+          <p><b>Seg–Sex:</b> 08:00–18:00 • <b>Sáb:</b> 08:00–12:00</p>
+          <div class="cta" style="margin-top:6px">
+            <h3>Precisa pra hoje?</h3>
+            <p>Chame no WhatsApp e priorizamos seu atendimento.</p>
+            <a class="btn btn-dark" target="_blank" rel="noopener" href="https://wa.me/5562999176992?text=Ol%C3%A1!%20Preciso%20de%20um%20servi%C3%A7o%20para%20hoje.">Chamar no Whats</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container fgrid">
+      <div>
+        <div class="logo" style="margin-bottom:10px">
+          <span class="logo-badge">CA</span> Copiadora Amarelinha
+        </div>
+        <p>Qualidade e agilidade em cada impressão. Atendemos pessoas e empresas com foco no resultado.</p>
+      </div>
+      <div>
+        <b>Links</b><br/>
+        <a href="#servicos">Serviços</a><br/>
+        <a href="#precos">Preços</a><br/>
+        <a href="#contato">Contato</a>
+      </div>
+      <div>
+        <b>Contato</b><br/>
+        <a href="mailto:contato@copiadoraamarelinha.com">contato@copiadoraamarelinha.com</a><br/>
+        <a target="_blank" rel="noopener" href="https://wa.me/5562999176992">WhatsApp: (62) 9 9917-6992</a>
+      </div>
+    </div>
+    <div class="container copy">© 2025 Copiadora Amarelinha • by Digitalize</div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a class="wafloat" title="Fale no WhatsApp" target="_blank" rel="noopener" href="https://wa.me/5562999176992">✆</a>
+
+  <script>
+    // Mobile menu (simples: rola para âncoras via CTA)
+    function toggleMenu(){
+      const nav = document.querySelector('nav ul');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.gap = '10px';
+      nav.style.background = '#111';
+      nav.style.padding = '12px';
+      nav.style.position = 'absolute';
+      nav.style.right = '20px';
+      nav.style.top = '64px';
+      nav.querySelectorAll('a').forEach(a=>{a.style.color='#fff'})
+    }
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      })
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Galeria
+    let idx=0;
+    function showSlide(n){
+      const slides=document.getElementById('slides');
+      const count=slides.children.length;
+      idx=(n+count)%count;
+      slides.style.transform=`translateX(-${idx*100}%)`;
+    }
+    function nextSlide(){ showSlide(idx+1) }
+    function prevSlide(){ showSlide(idx-1) }
+    setInterval(nextSlide, 5000);
+
+    // Estimador
+    const fmt = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+    function calcular(){
+      const tipo = document.getElementById('tipo').value;
+      const paginas = Math.max(1, parseInt(document.getElementById('paginas').value||'0'));
+      const encad = parseFloat(document.getElementById('encad').value||'0');
+      const papel = parseFloat(document.getElementById('papel').value||'0');
+
+      const base = (tipo==='pb'?0.25:tipo==='color'?1.20:1.50); // scan cobra por página
+      const porPagina = base + (tipo==='scan'?0:papel);
+      const subtotal = (tipo==='scan'? (base*paginas) : (porPagina*paginas));
+      const total = subtotal + encad;
+
+      document.getElementById('total').textContent = fmt.format(total);
+      return {tipo,paginas,encad,papel,total};
+    }
+    ['tipo','paginas','encad','papel'].forEach(id=>{
+      document.getElementById(id).addEventListener('input', calcular)
+    });
+    calcular();
+
+    // Enviar simulação para Whats
+    function enviarWhats(){
+      const r = calcular();
+      const labels = {pb:'Impressão P&B', color:'Impressão Colorida', scan:'Digitalização'};
+      const msg = `Olá! Quero orçamento:\n• Serviço: ${labels[r.tipo]}\n• Páginas: ${r.paginas}\n• Encadernação: ${r.encad>0?'Sim':'Não'}\n• Papel extra: ${r.papel>0?'Sim':'Não'}\n• Total estimado: ${fmt.format(r.total)}\n\nPode me confirmar o valor final?`;
+      const url = "https://wa.me/5562999176992?text="+encodeURIComponent(msg);
+      window.open(url,'_blank');
+    }
+    function resetar(){
+      document.getElementById('tipo').value='pb';
+      document.getElementById('paginas').value=20;
+      document.getElementById('encad').value='0';
+      document.getElementById('papel').value='0';
+      calcular();
+    }
+
+    // Form contato -> Whats
+    function enviarFormWhats(form){
+      const data = new FormData(form);
+      const msg = `Olá! Meu nome é ${data.get('nome')}.\nTelefone: ${data.get('fone')}\nServiço: ${data.get('servico')}\nMensagem: ${data.get('msg')||'-'}\n\nPoderiam me retornar com um orçamento?`;
+      window.open("https://wa.me/5562999176992?text="+encodeURIComponent(msg),'_blank');
+      return false;
+    }
+  </script>
+</body>
+</html>
